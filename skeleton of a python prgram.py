@@ -13,7 +13,7 @@ import numpy as np
 def main():
     plt.close('all')
     fig1 = plt.figure()
-    fig1, ax_lst = plt.subplots(2, 2)  # creates a 2 by 2 figure list
+    fig1, ax_lst = plt.subplots(2, 2)  # creates a 2 by 2 figure list, if empty create 1 axes
     # axes is a single panel
     # axis is each direction in the axes
     # artist is every visible item

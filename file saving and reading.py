@@ -8,21 +8,30 @@ Created on Fri Dec  4 17:12:59 2020
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import requests
 
-header = 'ciao\nio sono un header\ne contengo, virgole'
+header = "ciao\nio sono un header\ne contengo, virgole"
 array = [[1, 2, 3, 4, 5, 6, 7, 8, 9], [11, 22, 33, 44, 55, 66, 77, 88, 99]]
-a = np.array(array)
-a = a.T  # transpose array
-df = pd.DataFrame(data=a, columns=('x', 'y'))
-df.to_csv('test.csv', index=False, header=header)
+a = np.array([1, 2, 3, 4])
+b = np.array([5, 6, 7, 8])
 
-np.savetxt('test2.csv', a, delimiter=',', header=header)
+#### This is the numpy method ####
+a_np = np.array(array)  # now it is two long rows
+a_np = a_np.T  # transpose array two long columns
 
-a_l = np.loadtxt('test2.csv', delimiter=',')
+np.savetxt("np.csv", a_np, delimiter=",", header=header)  # save as ASCII CSV
+np.save("np.npy", a_np)  # binary files: careful!
+a_np_l = np.loadtxt("np.csv", delimiter=",")  # load the ASCII array back
+a_np_ll = np.load("np.npy")  # load the binary array back
+# in case you prefer to have column labels you can usa dataframes
+df = pd.DataFrame(data=a_np, columns=("x", "y"))
+df.to_csv("test.csv", index=False, header=header)
+
 
 a = np.array([1, 2, 3, 4])
 b = np.array([5, 6, 7, 8])
-c = np.c_[a, b]
+c = np.c_[a, b]  # this stacks arrays in columns
+# c = np.r_[a,b] #this concatenats along the second axis
 d = 7
 
-print('hello word')
+print("Script completed")
