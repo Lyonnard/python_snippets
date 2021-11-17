@@ -1,5 +1,4 @@
 {
     "jupyter.jupyterServerType": "local",
-    "python.formatting.provider": "black",
-    "editor.fontSize": 18
+    "python.formatting.provider": "black"
 }
