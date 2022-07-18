@@ -39,3 +39,13 @@ plt.tight_layout()
 plt.tight_layout()
     my_plotter(ax_lst[0,0], x, data2, {"marker": "x"})
 plt.tight_layout()
+
+
+# unify legend for multiple graphs
+
+ln1 = ax1.plot(xdata,ydata,label='data A')
+ln2 = ax2.plot(xdata,ydata,label='data B')
+
+lines = ln1+ln2
+labels = [l.get_label() for l in lines]
+ax1.legend(lines,labels)
